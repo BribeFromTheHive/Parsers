@@ -2,7 +2,7 @@
 <NotepadPlus>
     <InternalCommands />
     <Macros>
-    <Macro name="Bribe's vJass2Lua version 0.7.0.2" Ctrl="no" Alt="yes" Shift="yes" Key="66">
+    <Macro name="Bribe's vJass2Lua version 0.7.0.3" Ctrl="no" Alt="yes" Shift="yes" Key="66">
         <!--Convert novjass blocks and simple C-style blockquotes to Lua blockquotes-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\/\/\!\h*novjass(.*?)^\h*\/\/\!\h*endnovjass" />
@@ -76,9 +76,16 @@
         
         <!--Handle loop when the exitwhen statement is right under the loop line (inlines it into the while line)-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kloop\s+exitwhen\h*(.*)(\-\-)*" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kloop\s+exitwhen\h*(.*?)\-\-" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="while not\($1\) do$2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="while not \($1\) do \-\-" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kloop\s+exitwhen\h*(.*?)$" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="while not \($1\) do" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
@@ -99,17 +106,24 @@
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kexitwhen(.*)(\-\-)*" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kexitwhen(.*?)\-\-" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="if$1 then break end$2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="if$1 then break end \-\-" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kexitwhen(.*)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="if$1 then break end" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kif true then break end" />
-        <Action type="3" message="1625" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="break" />
-        <Action type="3" message="1702" wParam="0" lParam="771" sParam="" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <!--Absolutely spam the shit out of this next macro to capture as many private globals as can be predicted...-->
@@ -758,9 +772,16 @@
         
         <!--Fix variable declaration without an assignment-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local|static)*\.*\h*\K(\w+)\b(?<!return|module|struct)(\h+)(\w+)\h*$" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K(\w+)\b(?<!return|module|struct)(\h+)(\w+)\h*$" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1 $4" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K(\w+)\b(?<!return|module|struct)(\h+)(\w+)\h*\-\-" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1 " />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
@@ -923,6 +944,14 @@
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@param $22 $21\n$+{space}---@param $24 $23\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20, $22, $24\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <!--func takes 12 args-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@param $22 $21\n$+{space}---@param $24 $23\n$+{space}---@param $26 $25\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20, $22, $24, $26\)" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <!--Remove useless return nothing line-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
@@ -936,7 +965,7 @@
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam=".*\K" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.7.0.2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.7.0.3" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
     </Macro>
