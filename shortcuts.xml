@@ -2,7 +2,7 @@
 <NotepadPlus>
     <InternalCommands />
     <Macros>
-    <Macro name="Bribe's vJass2Lua version 0.7.0.3" Ctrl="no" Alt="yes" Shift="yes" Key="66">
+    <Macro name="Bribe's vJass2Lua version 0.8.0.0" Ctrl="no" Alt="yes" Shift="yes" Key="66">
         <!--Convert novjass blocks and simple C-style blockquotes to Lua blockquotes-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\/\/\!\h*novjass(.*?)^\h*\/\/\!\h*endnovjass" />
@@ -128,218 +128,218 @@
         
         <!--Absolutely spam the shit out of this next macro to capture as many private globals as can be predicted...-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         <!--If you need more private variables to be converted, the below is what needs to be duplicated...
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals((?:(?!globals|endglobals).*?))^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)^\h*\Kprivate(?:\h+constant)*(?=.*endglobals)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
@@ -508,7 +508,7 @@
         
         <!--'something.func()' changes to 'something:func() to correctly feed Lua's expectations (hence why we convert all static methods to methods)-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="\.(\w+)\h*\(" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="\.([\$\w]+)\h*\(" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="\:$1\(" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -523,47 +523,57 @@
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kimplement\h+(\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kimplement\h+([\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1Module.implement\(thistype\)" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass.implement\(\&quot;$1\&quot;, SCOPE_PREFIX, thistype\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
-        <!--Treat textmacro without parameters as a function that creates all the objects within the macro when the macro is called-->
+        <!--Process textmacro without parameters-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\-\-\!\h*textmacro\h+(\w+)\h*$(.*?)(h*)\-\-\!\h*endtextmacro" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="function $1\(\)$2$3end" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.textmacro\(\&quot;$1\&quot;, nil, function\(thistype\) $2$3 end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        
+        <!--Convert the commas in texmacro args from , to ","-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="(?:\G(?!^)|^--!\h*textmacro\h+\w+\h+takes)(?:(?!takes|$).)*?\K\h*,\h*(?=.*$)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\&quot;,\&quot;" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        
+        <!--Enclose left and right side of textmacro parameters with {" and "}-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\-\-\!\h*textmacro\h+(\w+)\h+\w+\h*(.*?)$(.*?)(h*)\-\-\!\h*endtextmacro" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.textmacro\(\&quot;$1\&quot;, \{\&quot;$2\&quot;\}, \[\[$3$4\]\]\)" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
+        <!--Process runtextmacro without parameters-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\-\-\!\h*runtextmacro\h+(?:optional)*\h*(\w+)\(\)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\-\-\!\h*runtextmacro\h+(?:optional)*\h*(\w+)\h*\(\h*\)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="pcall\($1\)" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.runtextmacro\(\&quot;$1\&quot;, \{thistype\}\)" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-
-        <!--Treat any other textmacros as blockquotes because it is impossible to know how the user will want them to be-->
+        
+        <!--Process runtextmacro with parameters-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\-\-\K\!\h*textmacro\h+" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\-\-\!\h*runtextmacro\h+(?:optional)*\h*(\w+)\h*\((.*?)\)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="[[MACRO " />
-        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
-        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-
-        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\-\-\!\h*endtextmacro" />
-        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="END_MACRO]]" />
-        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.runtextmacro\(\&quot;$1\&quot;, \{$2\}\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <!--Interface is just a class full of stub methods that sometimes return a default value (usually "true"). I have incorporated this into vJass-Style-Struct v1.3-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kinterface\h+(\w+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="Struct $1 = Struct\.interface\(true\)\n--[[" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="Struct $1 = vJass\.interface\(true\)\n--[[" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
@@ -582,7 +592,7 @@
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)\Kpublic\h*function\h*(\w+)(.*?)^(\h*end)function" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)\Kpublic\h*function\h*([\$\w]+)(.*?)^(\h*end)function" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n$1local function $2$3$4 _G\[SCOPE_PREFIX..\&quot;$2\&quot;\] = $2" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
@@ -605,7 +615,7 @@
 
         <!--Convert readonly operators-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*(\w+)\h*takes\h+nothing\h+returns\h+\w+(.*?end)method" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*([\$\w]+)\h*takes\h+nothing\h+returns\h+[\$\w]+(.*?end)method" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="thistype\:_operatorget\(\&quot;$1\&quot;\, function\(self\)$2\)" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
@@ -613,7 +623,7 @@
 
         <!--Convert setonly operators-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*(\w+)\h*\=\h*takes\h+\w+\h+(\w+)\h+returns\h+\w+(.*?end)method" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*([\$\w]+)\h*\=\h*takes\h+[\$\w]+\h+([\$\w]+)\h+returns\h+[\$\w]+(.*?end)method" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="thistype\:_operatorset\(\&quot;$1\&quot;\, function\(self\, $2\)$3\)" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
@@ -621,7 +631,7 @@
 
         <!--Convert getindex operators-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*\[\h*\]\h*takes\h+\w+\h+(\w+)\h+returns\h+\w+" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*\[\h*\]\h*takes\h+[\$\w]+\h+([\$\w]+)\h+returns\h+[\$\w]+" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="function thistype\:_getindex\($1\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -629,7 +639,7 @@
 
         <!--Convert setindex operators-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*\[\h*\]\h*\=\h*takes\h+\w+\h+(\w+)\h*\,\h*\w+\h+(\w+)\h+returns\h+\w+" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*(?:static)*\h*method\h*operator\h*\[\h*\]\h*\=\h*takes\h+[\$\w]+\h+([\$\w]+)\h*\,\h*[\$\w]+\h+([\$\w]+)\h+returns\h+[\$\w]+" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="function thistype\:_setindex\($1\, $2\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -641,12 +651,12 @@
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-
-        <!--Requires Hook-->
+        
+        <!--Simple hook that never gets removed-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Khook\h+(\w+)\h+(\w*(?:\.\w+)*)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="Hook\.addSimple\(&quot;$1&quot;\, $2\)" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.hook\(&quot;$1&quot;\, $2\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
@@ -724,15 +734,23 @@
         
         <!--function interfaces are no longer necessary-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kfunction interface" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K(?:public|private)*\h*function interface" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="---@class" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
-        <!--Private struct/module/scope/function converts to local of the same-->
+        <!--Uses the vJass.module/vJass.implement syntax introduced in vJass Style Struct-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kprivate\h*(struct|module|scope|function)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)\K(\$?(local|private|public)\$?\h*)*module\h+([\$\w]+)(.*?^\h*end)module" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.module\(\&quot;$4\&quot;, \&quot;$3\&quot;, SCOPE_PREFIX, function\(thistype\)\n$1    local Struct _ENV = Struct.environment\($4\)\n$1    local public, private \= thistype, $4$5\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        
+        <!--Private struct/scope/function converts to local of the same-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kprivate\h*(struct|scope|function)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local $1" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -740,23 +758,39 @@
         
         <!--Public structs are local with a LibraryName_structName prefix.-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kpublic\h+struct\h+(\w+)(.*)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\Kpublic\h+struct\h+([\$\w]+)(.*)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="local struct $1 $2\n_G\[SCOPE_PREFIX..\&quot;$1\&quot;\] \= $1" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
-        <!--Fix variable declaration with an assignment-->
+        <!--Fix variable declaration with an assignment and comment-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="(\w+)(\h+)(\w+)(\h*)\=([^=].*(\-\-)*)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="\b([\$\w]+)\b\h+\b([\$\w]+)\b(\h*)\=([^=].*)--" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2$4=$5 ---@type $1 $6" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 $3=$4 ---@type $1 " />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <!--Fix variable declaration with an assignment but no comment-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="\b([\$\w]+)\b\h+\b([\$\w]+)\b(\h*)\=([^=](?!.*--).*$)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 $3=$4 ---@type $1" />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <!--Convert vJass 2D array -->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="([\$\w]+)\h+array\h+([\$\w]+)\h*\[(\d+\)]\h*\[(\d+\)]" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = vJass.array2D\($3, $4\) ---@type $1\[\]\[\]" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <!--Convert type array name to name = {} ---@type type-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="(\w+)\h+array\h+(\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="([\$\w]+)\h+array\h+([\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = \{\} ---@type $1\[\]" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -772,16 +806,9 @@
         
         <!--Fix variable declaration without an assignment-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K(\w+)\b(?<!return|module|struct)(\h+)(\w+)\h*$" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K([\$\w]+)\b(?<!return|module|struct)(\h+)([\$\w]+)\h*$" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1" />
-        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
-        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-
-        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K(\w+)\b(?<!return|module|struct)(\h+)(\w+)\h*\-\-" />
-        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1 " />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
@@ -808,14 +835,6 @@
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1\." />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-        
-        <!--Uses the Struct.module/module.implement syntax introduced in vJass Style Struct-->
-        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)\K(local\h*)*module\h+(\w+)(.*?^\h*end)module" />
-        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2$3Module = Struct\.module\(function\(thistype\)\n$1    local _ENV = Struct.environment\($3Module\)\n$1    local public, private \= thistype, $3Module$4\)" />
-        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
-        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <!--Convert scope and handle its initializer (if any exists)-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
@@ -827,7 +846,7 @@
         
         <!--Prevent it from being overwritten by the next search but allow it to be overritten by the following one-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:local)?\h*\Kstruct\h+(\w+)\h+extends\h+array" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:local)?\h*\Kstruct\h+([\$\w]+)\h+extends\h+array" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="struct $1" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -835,23 +854,23 @@
 
         <!--Convert extending structs into vJass style structs.-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+(\w+) extends (\w*)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+([\$\w]+) extends (\w*)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = Struct\($3\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = vJass\.struct\($3\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <!--Convert remaining structs into vJass style structs.-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+(\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+([\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = Struct\(\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = vJass\.struct\(\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
         <!--func takes 0 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+nothing\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+nothing\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@return $+{rtype}\n$+{space}$2\(\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -859,7 +878,7 @@
         
         <!--func takes 1 arg-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@return $+{rtype}\n$+{space}$2\($4\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -867,7 +886,7 @@
         
         <!--func takes 2 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -875,7 +894,7 @@
         
         <!--func takes 3 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -883,7 +902,7 @@
         
         <!--func takes 4 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -891,7 +910,7 @@
         
         <!--func takes 5 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -899,7 +918,7 @@
         
         <!--func takes 6 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -907,7 +926,7 @@
         
         <!--func takes 7 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -915,7 +934,7 @@
         
         <!--func takes 8 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -923,7 +942,7 @@
         
         <!--func takes 9 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -931,7 +950,7 @@
 
         <!--func takes 10 args-->        
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@param $22 $21\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20, $22\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -939,7 +958,7 @@
         
         <!--func takes 11 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@param $22 $21\n$+{space}---@param $24 $23\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20, $22, $24\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -947,7 +966,7 @@
 
         <!--func takes 12 args-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
-        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h*,\h*(\w+)\h+(\w+)\h+returns\h+(?<rtype>\w+)" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?<space>\h*)(.+) takes\h+([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h*,\h*([\$\w]+)\h+([\$\w]+)\h+returns\h+(?<rtype>[\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$+{space}---@param $4 $3\n$+{space}---@param $6 $5\n$+{space}---@param $8 $7\n$+{space}---@param $10 $9\n$+{space}---@param $12 $11\n$+{space}---@param $14 $13\n$+{space}---@param $16 $15\n$+{space}---@param $18 $17\n$+{space}---@param $20 $19\n$+{space}---@param $22 $21\n$+{space}---@param $24 $23\n$+{space}---@param $26 $25\n$+{space}---@return $+{rtype}\n$+{space}$2\($4, $6, $8, $10, $12, $14, $16, $18, $20, $22, $24, $26\)" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
@@ -965,7 +984,7 @@
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam=".*\K" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.7.0.3" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.8.0.0" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
     </Macro>
