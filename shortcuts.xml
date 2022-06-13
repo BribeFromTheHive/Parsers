@@ -2,7 +2,7 @@
 <NotepadPlus>
     <InternalCommands />
     <Macros>
-    <Macro name="Bribe's vJass2Lua version 0.8.0.0" Ctrl="no" Alt="yes" Shift="yes" Key="66">
+    <Macro name="Bribe's vJass2Lua version 0.8.0.1" Ctrl="no" Alt="yes" Shift="yes" Key="66">
         <!--Convert novjass blocks and simple C-style blockquotes to Lua blockquotes-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*\K\/\/\!\h*novjass(.*?)^\h*\/\/\!\h*endnovjass" />
@@ -482,6 +482,38 @@
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
         -->
         
+        <!-- Public globals can only be parsed using Global Variable Remapper. These aren't too common, so I'll keep their list short. -->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)\K(^\h*)public\h+(\w+)\h+(\w+)([^\n\r]*)(?=.*endglobals)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..&quot;$3\&quot;\, function\(\) return $3 end, function\(val\) $3 = val end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" /> 
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)\K(^\h*)public\h+(\w+)\h+(\w+)([^\n\r]*)(?=.*endglobals)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..&quot;$3\&quot;\, function\(\) return $3 end, function\(val\) $3 = val end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)\K(^\h*)public\h+(\w+)\h+(\w+)([^\n\r]*)(?=.*endglobals)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..&quot;$3\&quot;\, function\(\) return $3 end, function\(val\) $3 = val end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)\K(^\h*)public\h+(\w+)\h+(\w+)([^\n\r]*)(?=.*endglobals)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..&quot;$3\&quot;\, function\(\) return $3 end, function\(val\) $3 = val end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*globals(?:(?!globals|endglobals).*?)\K(^\h*)public\h+(\w+)\h+(\w+)([^\n\r]*)(?=.*endglobals)" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..&quot;$3\&quot;\, function\(\) return $3 end, function\(val\) $3 = val end\)" />
+        <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+        
         <!--Can now kill the globals blocks as we no longer need them.-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:end)?globals" />
@@ -744,7 +776,7 @@
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)\K(\$?(local|private|public)\$?\h*)*module\h+([\$\w]+)(.*?^\h*end)module" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.module\(\&quot;$4\&quot;, \&quot;$3\&quot;, SCOPE_PREFIX, function\(thistype\)\n$1    local Struct _ENV = Struct.environment\($4\)\n$1    local public, private \= thistype, $4$5\)" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="vJass\.module\(\&quot;$4\&quot;, \&quot;$3\&quot;, SCOPE_PREFIX, function\(private, public\)\n$1    local Struct _ENV = Struct.environment\(private\)\n$1    local Struct thistype \= public$5\)" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
@@ -811,6 +843,14 @@
         <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+
+        <!--Fix variable declaration without an assignment and with a comment-->
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^\h*(?:private|public|local)*\h*(?:static)*\h*\K([\$\w]+)\b(?<!return|module|struct)(\h+)([\$\w]+)\h*\-\-" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$3$2= nil ---@type $1 " />
+        <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
         
         <!--convert static member name to thistype.name and fix static constant-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
@@ -856,15 +896,15 @@
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+([\$\w]+) extends (\w*)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = vJass\.struct\($3\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = Struct\($3\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
-
+        
         <!--Convert remaining structs into vJass style structs.-->
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(\h*)(?:local)?\h*\Kstruct\h+([\$\w]+)" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = vJass\.struct\(\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="$2 = Struct\(\) \n$1do\n$1    local _ENV \= $2\:environment\(\)\n$1    local thistype, public, private \= $2, $2, $2" />
         <Action type="3" message="1702" wParam="0" lParam="770" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
 
@@ -984,7 +1024,7 @@
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
         <Action type="3" message="1601" wParam="0" lParam="0" sParam=".*\K" />
         <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
-        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.8.0.0" />
+        <Action type="3" message="1602" wParam="0" lParam="0" sParam="\n--Conversion by vJass2Lua v0.8.0.1" />
         <Action type="3" message="1702" wParam="0" lParam="1794" sParam="" />
         <Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
     </Macro>
