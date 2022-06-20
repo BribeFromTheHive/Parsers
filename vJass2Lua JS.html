@@ -40,7 +40,6 @@
 
             parsing = parsing.replace(/\b(do|in|end|for|nil|break|repeat|until|while)\b/g, '$1_'); //fix Lua keywords that aren't found in JASS.
             
-            parsing = parsing.replace(/^([ \t]*)\-\-\![ \t]*runtextmacro[ \t]+(?:optional)*[ \t]*(\w+)[ \t]*\((.*?)\)/gm, '$1vJass.runtextmacro(\"$2\", \{$3\})');
             parsing = parsing.replace(/!=/g, '~=');
             parsing = parsing.replace(/\bnull\b/g, 'nil');
             parsing = parsing.replace(/\.exists\b/g, ''); //vJass feature is the same as simply evaluating the variable in Lua.
@@ -50,6 +49,8 @@
             parsing = parsing.replace(/\+[ \t]*\"/g, '..\"'); //fix predictable string cocatenation
 
             parsing = parsing.replace(/\.([\$\w]+)[ \t]*\(/gm, '\:$1\('); //treat all x.method() as x:method() just in case we need to pass x as "self".
+            parsing = parsing.replace(/^([ \t]*)\-\-\![ \t]*runtextmacro[ \t]+(?:optional)*[ \t]*(\w+)[ \t]*\((.*?)\)/gm, '$1vJass.runtextmacro(\"$2\", \{$3\})');
+
             parsing = parsing.replace(/^([ \t]*)interface\b[ \t]+([\$\w]+)(.*?)^[ \t]*endinterface/gm, '$1Struct $2 = vJass\.interface\(true\)\n$1--[[$3$1]]');
             
             const replaceArray1 = /^[ \t]*([\$\w]+)[ \t]+array[ \t]+([\$\w]+)(.*)/m;
@@ -118,13 +119,13 @@
 
             parsing = parsing.replace(/^[ \t]*globals\b(.*?)\bendglobals\b/gms, function(_, globals) {
                 globals = globals.replace(/^([ \t]*)private(?:[ \t]+constant)*\b/gm, '$1local');
-                globals = globals.replace(/^([ \t]*)public[ \t]+constant[ \t]+(\w+)[ \t]+(\w+)([^\n\r]*)/gm, '$1local $2 $3$4\n$1_G\[SCOPE_PREFIX..\"$3\"\] \= $3');
-                globals = globals.replace(/^([ \t]*)public[ \t]+(\w+)[ \t]+(\w+)([^\n\r]*)/gm, '$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..\"$3\";\, function\(\) return $3 end, function\(val\) $3 = val end\)');
+                globals = globals.replace(/^([ \t]*)public[ \t]+constant[ \t]+([\$\w]+)[ \t]+([\$\w]+)([^\n\r]*)/gm, '$1local $2 $3$4\n$1_G\[SCOPE_PREFIX..\"$3\"\] \= $3');
+                globals = globals.replace(/^([ \t]*)public[ \t]+([\$\w]+)[ \t]+([\$\w]+)\b([^\n\r]*)/gm, '$1local $2 $3$4\n$1GlobalRemap\(SCOPE_PREFIX..\"$3\"\, function\(\) return $3 end, function\(val\) $3 = val end\)');
                 globals = globals.replace(/^([ \t]*(?:local[ \t]+)*)(.*)/gm, (_, prefix, remainder) => prefix + parseVar(remainder))
                 return globals;
             });
             
-            parsing = parsing.replace(/function[ \t]*(\w+[\.]*[\w]*[ \t]*[\)\,])/, "$1");
+            parsing = parsing.replace(/function[ \t]*([\$\w]+[\.]*[\w\$]*[ \t]*[\)\,])/, "$1");
 
             //parse textmacros
             const macroHasArgs = /^[ \t]takes[ \t]*(.*)/m;
@@ -144,6 +145,8 @@
             });
 
             //parse structs and modules similarly
+            
+            const isStructMember = /^([ \t]*)(static|readonly|public|private|method)[ \t]+(.*)/gm
             parsing = parsing.replace(/^([ \t]*)(private|public)*[ \t]*(struct|module)[ \t]*(.*?^[ \t]*end)(?:struct|module)/gms, function(_, indent, scope, strOrMod, body) {
                 var linebreak = body.search(getFirstLine);
                 var head = body.substring(0, linebreak);
@@ -152,16 +155,18 @@
                 const isModule = (strOrMod == "module");
 
                 //parse all easily-detectable variable and method declarations
-                body = body.replace(/^([ \t]*)(static|readonly|public|private|method)[ \t]+(.*)/gm, function(_, indent, scope, line) {
+                body = body.replace(isStructMember, function(_, indent, scope, line) {
                     if (scope != "static") {
                         line = line.replace(/^([ \t]*)static[ \t]*(?:constant[ \t]+)*/m, '$1') //remove any case of "static" and "constant".
                     }
+                    var isMethod;
                     if (! isModule || scope != "private") {
+                        isMethod = scope == "method"
                         scope = "thistype"; //only keep "private" for modules so the table knows to point to the module rather than to the implementing struct.
                     }
                     var operator;
-                    if (scope == "method" || line.substring(0,6) == "method") {
-                        line = line.replace(/^method[ \t]+(\w+)\b/m, function(_, name) {
+                    if (isMethod || line.substring(0,6) == "method") {
+                        line = line.replace(/^(?:method)*[ \t]*\b([\$\w]+)\b/m, function(_, name) {
                             if (name != "operator") {
                                 return "function "+scope+":"+name;
                             } else {
@@ -170,16 +175,16 @@
                             }
                         });
                         if (operator) {
-                            line = line.replace(/^[ \t]*(?:(\[[ \t]*\])|(\w+)\b)[ \t]*([=]*)[ \t]*(.*)/m, function(_, bracket, word, setter, remainder) {
-                                if (bracket != "") {
+                            line = line.replace(/^[ \t]*(?:(\[[ \t]*\])|([\$\w]+))[ \t]*([=]*)[ \t]*(.*)/m, function(_, bracket, word, setter, remainder) {
+                                if (bracket != undefined) {
                                     if (setter != "") {
-                                        return "function thistype:_setindex("+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w]+)[ \t]*,[ \t]*[\$\w]+[ \t]*([\$\w]+)\b/, "$1, $2)");
+                                        return "function thistype:_setindex("+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w]+)[ \t]*,[ \t]*[\$\w]+[ \t]*([\$\w]+\b|\$).*/, "$1, $2)");
                                     } else {
-                                        return "function thistype:_getindex("+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w]+)\b/, '$1)');
+                                        return "function thistype:_getindex("+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w]+\b|\$).*/, '$1)');
                                     }
                                 } else {
                                     if (setter != "") {
-                                        return 'function thistype:_operatorset("'+word+'", '+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w])\b/, 'function(self, $2)');
+                                        return 'function thistype:_operatorset("'+word+'", '+remainder.replace(/takes[ \t]+[\$\w]+[ \t]+([\$\w]+\b|\$).*/, 'function(self, $1)');
                                     } else {
                                         return 'function thistype:_operatorget("'+word+'", function(self)';
                                     }
@@ -192,16 +197,18 @@
                     return indent + line;
                 });
 
+                body = body.replace(/^([ \t]*function thistype:_operator.*?^[ \t]*end)method/gms, "$1)");
+                body = body.replace(/^([ \t]*end)method/gm, "$1");
+
                 if (isModule) {
-                    head = head.replace(/([\$\w]+)/, `vJass.module("$4", "$3", SCOPE_PREFIX, function(private, thistype)\n$1    local Struct _ENV = Struct.environment(private)`);
+                    head = head.replace(/([\$\w]+)/, `vJass.module("$1", "${scope}", SCOPE_PREFIX, function(private, thistype)\n${indent}    local Struct _ENV = Struct.environment(private)`);
                     body = body + ")";
                 } else {
-
-                }
-                if (scope == "public") {
-                    head = "local struct "; 
-                } else {
-                    head = "local struct";
+                    if (scope) {
+                        head = head.replace(/([\$\w]+)/, "local $1 = Struct() --"); 
+                    } else {
+                        head = head.replace(/([\$\w]+)/, "$1 = Struct() --"); 
+                    }
                 }
                 body = body.replace(/\bthis\b/g, 'self'); //implied 'this' in vJass doesn't work outside of structs, so we only need this replacer within a struct/module.
                 body = body.replace(/([^\w\d\]\)])\.([A-Za-z])/gm, '$1self\.$2'); //dot-syntax doesn't work in Lua without something before the dot.
@@ -210,7 +217,8 @@
                     if (scope == "") { scope == "thistype"; }
                     return indent+ scope+".";
                 });
-                return indent + head + "do"+ body;
+                if (! isModule) { body = "do" + body; }
+                return indent + head + "\n" + indent + body;
             });
 
             parsing = parsing.replace(/^([ \t]*end)(?:loop|if|function)/gm, '$1')
@@ -235,7 +243,7 @@
             });
             
             recent = vJassSource;
-            vJassField.value = parsing;
+            vJassField.value = parsing + "\n--Conversion by vJass2Lua v0.9.0.0 beta";
         }
     </script>
 </html>
