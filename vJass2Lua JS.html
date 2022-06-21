@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bribe's vJass2Lua version 0.9 alpha</title>
+        <title>Bribe's vJass2Lua version 0.9 beta</title>
     </head>
     <body>
         <input type="button" id="convert2lua" value="Convert to Lua"/>
@@ -11,6 +11,7 @@
         <br />
         Configurables:
         <input type="checkbox" id="deletecomments">Delete comments
+        <input type="checkbox" id="deletelinebreaks">Delete extra linebreaks
         <input type="checkbox" id="floordiv">Floor all division
         <br />
         <input type="checkbox" checked id="usehook">Enable Hook
@@ -25,12 +26,26 @@
         }
         document.getElementById('convert2lua').onclick = function() {
             const vJassField = document.getElementById("scriptblock");
+            const deleteComments = (document.getElementById("deletecomments").checked);
             const vJassSource = vJassField.value;
             var parsing = vJassSource;
-            
-            parsing = parsing.replace(/^([ \t]*)\/\/\![ \t]*novjass\b(.*?)^[ \t]*\/\/\![ \t]*\bendnovjass\b/gms, '$1--\[\[$2$1\]\]'); //novjass blocks
-            parsing = parsing.replace(/\/\//g, '--'); //line comments
-            parsing = parsing.replace(/\/\*(.*?)\*\/[ \t]*([ \t]*--.*?)*$/gms, '--\[\[$1\]\]$2'); //convert safe blockquotes (ones that are not breaking /**/ up /**/ text /**/ like /**/ this)
+            const commentArray = [];
+            var commentArrayN = -1;
+
+            function insertComment(str) {
+                if (deleteComments) { return ""; }
+                commentArrayN += 1;
+                commentArray[commentArrayN] = str;
+                return '--'+commentArrayN;
+            }
+
+            parsing = parsing.replace(/^[ \t]*\/\/\![ \t]*novjass\b.*?^[ \t]*\/\/\![ \t]*\bendnovjass\b/gms, str => insertComment('--[[\n'+str+']]--')); //novjass blocks
+            parsing = parsing.replace(/([^\/])\/\/\!/g, '$1--!'); //preprocessor requests
+            parsing = parsing.replace(/\/\/(.*)/g, (_, str) => insertComment('--'+str)); //line comments
+            parsing = parsing.replace(/\/\*(.*?)\*\/([ \t]*[ \t]*--.*?)*$/gms, (_, a, b) => {
+                if (b == undefined) { b = ""}
+                return insertComment('--[['+a+']]--'+b);
+            }); //convert safe blockquotes (ones that are not breaking /**/ up /**/ text /**/ like /**/ this)
             parsing = parsing.replace(/\/\*.*?\*\//gms, ''); //delete all unsafe blockquotes
 
             parsing = parsing.replace(/^([ \t]*)debug[ \t]+(?:(?:set|call)[ \t])*/gm, '$1--'); //convert debug lines to comments
@@ -201,6 +216,7 @@
                 body = body.replace(/^([ \t]*end)method/gm, "$1");
 
                 if (isModule) {
+                    if (scope == undefined) {scope = ""}
                     head = head.replace(/([\$\w]+)/, `vJass.module("$1", "${scope}", SCOPE_PREFIX, function(private, thistype)\n${indent}    local Struct _ENV = Struct.environment(private)`);
                     body = body + ")";
                 } else {
@@ -242,6 +258,12 @@
                 return paramEmmy + returnEmmy + indent + func + "(" + argsResult + ")";
             });
             
+            if (commentArrayN >= 0) {
+                parsing = parsing.replace(/--(\d+)/g, (_, num) => commentArray[num]);
+            }
+            if (document.getElementById("deletelinebreaks").checked) {
+                parsing = parsing.replace(/(\r?\n)(?:[ \t]*\r?\n)*/g, "$1");
+            }
             recent = vJassSource;
             vJassField.value = parsing + "\n--Conversion by vJass2Lua v0.9.0.0 beta";
         }
