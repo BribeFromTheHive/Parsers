@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bribe's vJass2Lua version 0.9 beta</title>
+        <title>Bribe's vJass2Lua version 0.9</title>
     </head>
     <body>
         <input type="button" id="convert2lua" value="Convert to Lua"/>
         <input type="button" id="revert2vjass" value="Revert to vJass"/>
+        <input type="button" id="copyscript" value="Copy to Clipboard"/>
         <br/>
-        <textarea rows="40" cols="120" id="scriptblock" placeholder="Enter vJass script"></textarea>
+        <textarea autofocus rows="40" cols="120" id="scriptblock" placeholder="Enter vJass script" wrap="off"></textarea>
         <br />
         Configurables:
         <input type="checkbox" id="deletecomments">Delete comments
+        <input type="checkbox" id="deleteemmy">Delete Emmy Annotation
         <input type="checkbox" id="deletelinebreaks">Delete extra linebreaks
-        <input type="checkbox" id="floordiv">Floor all division
-        <br />
-        <input type="checkbox" checked id="usehook">Enable Hook
     </body>
     <script>
         var recent = "";
-        var converted = false;//prevent double-click of Convert2Lua from corrupting the code
+        const vJassField = document.getElementById("scriptblock");
+        var converted = false; //prevent double-click of Convert2Lua from corrupting the code
+
+        function deleteEmmies(str) {
+            if (document.getElementById("deleteemmy").checked) {
+                return str.replace(/---@.*/g, "");
+            }
+            return str;
+        }
+        document.getElementById('deleteemmy').onchange = () => vJassField.value = deleteEmmies(vJassField.value);
+
+        function delEmmy() {
+            vJassField.value = deleteEmmies(vJassField.value);
+        }
+        function deleteLineBreaks(str) {
+            if (document.getElementById("deletelinebreaks").checked) {
+                return str.replace(/(\r?\n)(?:[ \t]*\r?\n)*/g, "$1");
+            }
+            return str;
+        }
+        document.getElementById('deletelinebreaks').onchange = () => vJassField.value = deleteLineBreaks(vJassField.value);
+
         document.getElementById('revert2vjass').onclick = function() {
             var current = document.getElementById('scriptblock').value;
             if (converted && recent != current && recent != "") {
@@ -26,11 +46,22 @@
                 document.getElementById('scriptblock').value = recent;
             }
         }
-        document.getElementById('convert2lua').onclick = function() {
-            if (converted) { return; } else { converted = true; }
-            const vJassField = document.getElementById("scriptblock");
-            const deleteComments = (document.getElementById("deletecomments").checked);
+        document.getElementById('copyscript').onclick = function() {
+            var copy = document.getElementById("scriptblock");
+            copy.select();
+            copy.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copy.value);
+        }
+        function parseScript() {
             const vJassSource = vJassField.value;
+            if (converted && (vJassSource.search(/^--Conversion by vJass2Lua/m) >= 0)) {
+                console.log("duplicate conversion detected")
+                return;
+            } else {
+                console.log("conversion commencing")
+                converted = true;
+            }
+            const deleteComments = (document.getElementById("deletecomments").checked);
             var parsing = vJassSource;
             const commentArray = [];
             var commentArrayN = -1;
@@ -57,6 +88,7 @@
                 rawcodeArray[rawcodeArrayN] = 'FourCC('+str+')';
                 return '"&fcc;'+rawcodeArrayN+'"';
             }); //Wrap "hfoo" or "Abil" in FourCC
+
             parsing = parsing.replace(/([^\/])\/\/\!/g, '$1--!'); //preprocessor requests
             parsing = parsing.replace(/\/\/(.*)/g, (_, str) => insertComment('--'+str)); //line comments
             parsing = parsing.replace(/\/\*(.*?)\*\/([ \t]*[ \t]*--.*?)*$/gms, (_, a, b) => {
@@ -82,6 +114,8 @@
             parsing = parsing.replace(/\.([\$\w]+)[ \t]*\(/gm, '\:$1\('); //treat all x.method() as x:method() just in case we need to pass x as "self".
             parsing = parsing.replace(/^([ \t]*)\-\-\![ \t]*runtextmacro[ \t]+(?:optional)*[ \t]*(\w+)[ \t]*\((.*?)\)/gm, '$1vJass.runtextmacro(\"$2\", \{$3\})');
 
+            //Convert vJass dynamic array declarations
+            parsing = parsing.replace(/^([ \t]*)(?:private\.|public\.)*[ \t]*type[ \t]+(\w+)[ \t]+extends[ \t]+(\w+)[ \t]+array[ \t]*\[[ \t]*(\d+)[ \t]*\]/g, "$1local $2 \= Struct\(\);$2\.size \= $4 ---@type $3\[\]");
             parsing = parsing.replace(/^([ \t]*)interface\b[ \t]+([\$\w]+)(.*?)^[ \t]*endinterface/gm, '$1Struct $2 = vJass\.interface\(true\)\n$1--[[$3$1]]');
             
             const replaceArray1 = /^[ \t]*([\$\w]+)[ \t]+array[ \t]+([\$\w]+)(.*)/m;
@@ -136,7 +170,17 @@
             });
             parsing = parsing.replace(/^([ \t]*)private[ \t]+keyword\b/gm, '$1local');
             
-            parsing = parsing.replace(/^([ \t]*)library[ \t]+(\w+)[ \t]*(?:initializer[ \t]*(\w*))?(.*?)endlibrary/gm, '($1)do\nlocal string SCOPE_PREFIX \= \"$2_\"\n--$4_G\[\"LIBRARY_\"..SCOPE_PREFIX] = true\nif \"$3\" \~\= \"\" then OnGlobalInit\($3\) end\nend');
+            parsing = parsing.replace(/^([ \t]*)library[ \t]+(\w+)[ \t]*(?:initializer[ \t]*(\w*))?(.*?)endlibrary/gms, (_, indent, name, init, body) => {
+                body = `${indent}do\n${indent}    local SCOPE_PREFIX = "${name}_" ---@type string ${body}`;
+                if (init != undefined) { body += indent + "    OnGlobalInit("+init+")\n"; }
+                return body + "\n"+indent+"end";
+            });
+            parsing = parsing.replace(/^([ \t]*)(private|public)?[ \t]*scope[ \t]+(\w+)[ \t]*(?:initializer[ \t]*(\w*))?(.*?)endscope/gms, (_, indent, scope, name, init, body) => {
+                if (scope != undefined) { name = SCOPE_PREFIX+'.."'+name; } else { name = '"'+name; }
+                body = `${indent}do\n${indent}    local SCOPE_PREFIX = ${name}_" ---@type string ${body}`;
+                if (init != undefined) { body += indent + "    OnTrigInit("+init+")\n"; }
+                return body + "\n"+indent+"end";
+            });
 
             parsing = parsing.replace(/^([ \t]*)loop\s+exitwhen[ \t]*([^\r\n]*)\-\-/gms, '$1while not \($2\) do \-\-');
             parsing = parsing.replace(/^([ \t]*)loop\s+exitwhen[ \t]*([^\r\n]*)/gms, '$1while not \($2\) do');
@@ -146,6 +190,8 @@
             parsing = parsing.replace(/^([ \t]*)exitwhen\b([^\r\n]*)/gm, '$1if$2 then break end');
             parsing = parsing.replace(/^([ \t]*)if true then break end/gm, '$1break');
             
+            parsing = parsing.replace(/\$([0-9a-fA-F]+[^\$])/g, "0x$1") //JASS "$hexcode" must be converted to "0xhexcode" to work in Lua.
+
             parsing = parsing.replace(/^([ \t]*)hook[ \t]+(\w+)[ \t]+(\w*(?:\.\w+)*)/gm, '$1vJass\.hook\("$2"\, $3\)');
 
             parsing = parsing.replace(/^[ \t]*globals\b(.*?)\bendglobals\b/gms, function(_, globals) {
@@ -178,7 +224,7 @@
             //parse structs and modules similarly
             
             const isStructMember = /^([ \t]*)(static|readonly|public|private|method)[ \t]+(.*)/gm
-            parsing = parsing.replace(/^([ \t]*)(private|public)*[ \t]*(struct|module)[ \t]*(.*?^[ \t]*end)(?:struct|module)/gms, function(_, indent, scope, strOrMod, body) {
+            parsing = parsing.replace(/^([ \t]*)(private|public)*[ \t]*(struct|module)[ \t]*([$\w]+)[ \t]*(.*?^[ \t]*end)(?:struct|module)/gms, function(_, indent, scope, strOrMod, name, body) {
                 var linebreak = body.search(getFirstLine);
                 var head = body.substring(0, linebreak);
                 body = body.substring(linebreak);
@@ -222,6 +268,7 @@
                                 }
                             });
                         }
+                        line += "\n"+indent+"    local _ENV = Struct.environment(self)"
                     } else {
                         line = scope+'.'+parseVar(line);
                     }
@@ -233,13 +280,19 @@
 
                 if (isModule) {
                     if (scope == undefined) {scope = ""}
-                    head = head.replace(/([\$\w]+)/, `vJass.module("$1", "${scope}", SCOPE_PREFIX, function(private, thistype)\n${indent}    local Struct _ENV = Struct.environment(private)`);
+                    head = `vJass.module("${name}", "${scope}", SCOPE_PREFIX, function(private, thistype)\n${indent}    local _ENV = Struct.environment(private)` + head;
                     body = body + ")";
                 } else {
+                    head = name+" = Struct() --" + head;
+                    head = head.replace(/\(\) --[ \t]*extends[ \t]+([$\w]+)/, (_, extended) => {
+                        if (extended == "array") { return "()"; }
+                        return `(${extended}) --`
+                    });
                     if (scope) {
-                        head = head.replace(/([\$\w]+)/, "local $1 = Struct() --"); 
-                    } else {
-                        head = head.replace(/([\$\w]+)/, "$1 = Struct() --"); 
+                        head = "local " + head;
+                        if (scope == "public") {
+                            head += "\n"+indent + '_G[SCOPE_PREFIX.."'+name+'"]'
+                        }
                     }
                 }
                 body = body.replace(/\bthis\b/g, 'self'); //implied 'this' in vJass doesn't work outside of structs, so we only need this replacer within a struct/module.
@@ -249,11 +302,13 @@
                     if (scope == "") { scope == "thistype"; }
                     return indent+ scope+".";
                 });
-                if (! isModule) { body = "do" + body; }
+                if (! isModule) { body = "do\n"+indent+"    local thistype = "+name+"\n"+indent+"    local _ENV = Struct.environment(thistype)" + body; }
                 return indent + head + "\n" + indent + body;
             });
 
             parsing = parsing.replace(/^([ \t]*end)(?:loop|if|function)/gm, '$1')
+
+            parsing = parsing.replace(/^([ \t]*)(?:public|private)*[ \t]*function interface/gm, "$1---@class")
 
             //parse function arguments
             const isNothing = /\bnothing\b/m;
@@ -273,7 +328,8 @@
                 }
                 return paramEmmy + returnEmmy + indent + func + "(" + argsResult + ")";
             });
-            
+            parsing = deleteEmmies(parsing);
+
             if (commentArrayN >= 0) {
                 parsing = parsing.replace(/--\&cmt\;(\d+)/g, (_, num) => commentArray[num]);
                 parsing = parsing.replace(/--\&cmt\;(\d+)/g, (_, num) => commentArray[num]); //do it again as blockquotes might have had packed comments
@@ -284,11 +340,23 @@
             if (rawcodeArrayN >= 0) {
                 parsing = parsing.replace(/"\&fcc\;(\d+)"/g, (_, num) => rawcodeArray[num]);
             }
-            if (document.getElementById("deletelinebreaks").checked) {
-                parsing = parsing.replace(/(\r?\n)(?:[ \t]*\r?\n)*/g, "$1");
-            }
+            parsing = deleteLineBreaks(parsing);
+
             recent = vJassSource;
-            vJassField.value = parsing + "\n--Conversion by vJass2Lua v0.9.0.0 beta";
+            parsing += "\n--Conversion by vJass2Lua v0.9.0.0";
+            vJassField.value = parsing
+            navigator.clipboard.writeText(parsing);
         }
+        vJassField.addEventListener('paste', function(e) { //solution from https://stackoverflow.com/a/6804718/18919165
+            var clipboardData, pastedData;
+            e.stopPropagation();
+            e.preventDefault();
+
+            clipboardData = e.clipboardData || window.clipboardData;
+
+            vJassField.value = clipboardData.getData('Text');
+            parseScript();
+        });
+        document.getElementById('convert2lua').onclick = parseScript;
     </script>
 </html>
