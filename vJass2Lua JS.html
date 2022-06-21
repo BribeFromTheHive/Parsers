@@ -18,28 +18,45 @@
     </body>
     <script>
         var recent = "";
+        var converted = false;//prevent double-click of Convert2Lua from corrupting the code
         document.getElementById('revert2vjass').onclick = function() {
             var current = document.getElementById('scriptblock').value;
-            if (recent != current && recent != "") {
+            if (converted && recent != current && recent != "") {
+                converted = false;
                 document.getElementById('scriptblock').value = recent;
             }
         }
         document.getElementById('convert2lua').onclick = function() {
+            if (converted) { return; } else { converted = true; }
             const vJassField = document.getElementById("scriptblock");
             const deleteComments = (document.getElementById("deletecomments").checked);
             const vJassSource = vJassField.value;
             var parsing = vJassSource;
             const commentArray = [];
             var commentArrayN = -1;
+            const stringArray = [];
+            var stringArrayN = -1;
+            const rawcodeArray = [];
+            var rawcodeArrayN = -1;
 
             function insertComment(str) {
                 if (deleteComments) { return ""; }
                 commentArrayN += 1;
                 commentArray[commentArrayN] = str;
-                return '--'+commentArrayN;
+                return '--&cmt;'+commentArrayN;
             }
 
             parsing = parsing.replace(/^[ \t]*\/\/\![ \t]*novjass\b.*?^[ \t]*\/\/\![ \t]*\bendnovjass\b/gms, str => insertComment('--[[\n'+str+']]--')); //novjass blocks
+            parsing = parsing.replace(/(?<!^.*\/\/.*)"(.*?)"/gm, (_, str) => {
+                stringArrayN += 1;
+                stringArray[stringArrayN] = str;
+                return '"&str;'+stringArrayN+'"';
+            })
+            parsing = parsing.replace(/'.{4,8}'/g, str => {
+                rawcodeArrayN += 1;
+                rawcodeArray[rawcodeArrayN] = 'FourCC('+str+')';
+                return '"&fcc;'+rawcodeArrayN+'"';
+            }); //Wrap "hfoo" or "Abil" in FourCC
             parsing = parsing.replace(/([^\/])\/\/\!/g, '$1--!'); //preprocessor requests
             parsing = parsing.replace(/\/\/(.*)/g, (_, str) => insertComment('--'+str)); //line comments
             parsing = parsing.replace(/\/\*(.*?)\*\/([ \t]*[ \t]*--.*?)*$/gms, (_, a, b) => {
@@ -47,11 +64,11 @@
                 return insertComment('--[['+a+']]--'+b);
             }); //convert safe blockquotes (ones that are not breaking /**/ up /**/ text /**/ like /**/ this)
             parsing = parsing.replace(/\/\*.*?\*\//gms, ''); //delete all unsafe blockquotes
+            parsing = parsing.replace(/^[ \t]*native\b.*/gm, str => insertComment('--'+str)); //comment-out natives
 
             parsing = parsing.replace(/^([ \t]*)debug[ \t]+(?:(?:set|call)[ \t])*/gm, '$1--'); //convert debug lines to comments
             parsing = parsing.replace(/^([ \t]*)(?:set|call|constant)[ \t]+/gm, '$1'); //these keywords don't exist in Lua
             parsing = parsing.replace(/^([ \t]*)static[ \t]+if\b/gm, '$1if'); //static-if is a vJass compile-time optimization, which Lua doesn't have.
-            parsing = parsing.replace(/^[ \t]*native\b.*/gm, ''); //delete natives
 
             parsing = parsing.replace(/\b(do|in|end|for|nil|break|repeat|until|while)\b/g, '$1_'); //fix Lua keywords that aren't found in JASS.
             
@@ -59,7 +76,6 @@
             parsing = parsing.replace(/\bnull\b/g, 'nil');
             parsing = parsing.replace(/\.exists\b/g, ''); //vJass feature is the same as simply evaluating the variable in Lua.
             parsing = parsing.replace(/'\\?(.)'/g, (_,char) => char.charCodeAt(0)); //convert 'a' into its integer equivalent
-            parsing = parsing.replace(/('.*?')/g, 'FourCC($1)'); //Wrap "hfoo" in FourCC
             parsing = parsing.replace(/\"[ \t]*\+/g, '\"..'); //see below
             parsing = parsing.replace(/\+[ \t]*\"/g, '..\"'); //fix predictable string cocatenation
 
@@ -259,7 +275,14 @@
             });
             
             if (commentArrayN >= 0) {
-                parsing = parsing.replace(/--(\d+)/g, (_, num) => commentArray[num]);
+                parsing = parsing.replace(/--\&cmt\;(\d+)/g, (_, num) => commentArray[num]);
+                parsing = parsing.replace(/--\&cmt\;(\d+)/g, (_, num) => commentArray[num]); //do it again as blockquotes might have had packed comments
+            }
+            if (stringArrayN >= 0) {
+                parsing = parsing.replace(/"\&str\;(\d+)"/g, (_, num) => '"'+stringArray[num]+'"');
+            }
+            if (rawcodeArrayN >= 0) {
+                parsing = parsing.replace(/"\&fcc\;(\d+)"/g, (_, num) => rawcodeArray[num]);
             }
             if (document.getElementById("deletelinebreaks").checked) {
                 parsing = parsing.replace(/(\r?\n)(?:[ \t]*\r?\n)*/g, "$1");
